@@ -25,7 +25,7 @@ namespace overlay
         [DllImport("user32.dll", SetLastError = true)]
         static extern IntPtr SetParent(IntPtr hWndChild, IntPtr hWndNewParent);
         Overlay overlay = new Overlay();
-        private void MoveOverlay()
+        private void MoveOverlay(object sender, EventArgs e)
         {
             overlay.Height = this.ActualHeight;
             overlay.Width = this.ActualWidth;
@@ -38,12 +38,13 @@ namespace overlay
         {
             InitializeComponent();
             overlay.OwnerWindow = this;
+            overlay.Show();
 
             Closed += MainWindow_Closed;
-            Activated += MainWindow_Activated;
-            SizeChanged += MainWindow_SizeChanged;
-            Loaded += MainWindow_Loaded;
-            LocationChanged += MainWindow_LocationChanged;
+            Activated += MoveOverlay;
+            SizeChanged += MoveOverlay;
+            Loaded += MoveOverlay;
+            LocationChanged += MoveOverlay;
 
         }
 
@@ -52,25 +53,5 @@ namespace overlay
             overlay.Close();
         }
 
-        private void MainWindow_LocationChanged(object sender, EventArgs e)
-        {
-            MoveOverlay();
-        }
-
-        private void MainWindow_Activated(object sender, EventArgs e)
-        {
-            MoveOverlay();
-        }
-
-        private void MainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            MoveOverlay();
-        }
-
-        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            MoveOverlay();
-            overlay.Show();
-        }
     }
 }
