@@ -1,0 +1,15 @@
+﻿<Window x:Class="overlay.Overlay"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:overlay"
+        mc:Ignorable="d" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" WindowStyle="None" Background="#00000000" AllowsTransparency="True" ShowInTaskbar="False" Topmost="True">
+    <Grid>
+        <TextBlock Name="textBlock" Margin="10" Text="Sample" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="80">
+            <TextBlock.Effect>
+                <DropShadowEffect ShadowDepth="4" Opacity="0.4" /> 
+            </TextBlock.Effect>
+        </TextBlock>
+    </Grid>
+</Window>
