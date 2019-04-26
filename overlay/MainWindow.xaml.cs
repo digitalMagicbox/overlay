@@ -27,10 +27,12 @@ namespace overlay
         Overlay overlay = new Overlay();
         private void MoveOverlay(object sender, EventArgs e)
         {
-            overlay.Height = this.ActualHeight;
-            overlay.Width = this.ActualWidth;
-            overlay.Top = this.Top; 
-            overlay.Left = this.Left;
+            var point = this.browser.PointToScreen(new Point());
+
+            overlay.Height = this.browser.ActualHeight;
+            overlay.Width = this.browser.ActualWidth;
+            overlay.Top = point.Y; 
+            overlay.Left = point.X;
             overlay.Topmost = true;
             overlay.Topmost = false;
         }
